@@ -22,6 +22,8 @@ RUN git clone https://github.com/ValdikSS/aceproxy.git
 #    apt-get autoremove && \
 #    rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
 
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
 EXPOSE 8000
