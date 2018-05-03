@@ -15,7 +15,9 @@ RUN apt-get install -y acestream-engine
 
 ## ace-proxy
 RUN apt-get install -y python2.7 python-gevent python-psutil git
-RUN git clone git@github.com:vhsw/aceproxy.git
+RUN git clone https://github.com/vhsw/aceproxy.git
+
+ 
 
 # housekeeping
 RUN apt-get clean autoclean && \
@@ -28,6 +30,6 @@ COPY config/supervisord.conf ${SUPERVISORD_CONF}
 ADD start.sh /usr/bin/start.sh
 RUN chmod +x /usr/bin/start.sh
 
-EXPOSE 8000 62062
+EXPOSE 8000
 
-ENTRYPOINT start.sh ${SUPERVISORD_CONF}
+ENTRYPOINT ["start.sh"]
