@@ -28,6 +28,6 @@ COPY config/supervisord.conf ${SUPERVISORD_CONF}
 ADD start.sh /usr/bin/start.sh
 RUN chmod +x /usr/bin/start.sh
 
-EXPOSE 8000
+EXPOSE 8000 62062
 
 ENTRYPOINT start.sh ${SUPERVISORD_CONF}
