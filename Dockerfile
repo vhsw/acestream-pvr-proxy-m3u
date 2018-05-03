@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive 
-# ENV HOME "/root"
+
 ENV SUPERVISORD_CONF=/etc/supervisor/conf.d/supervisord.conf
 RUN apt-get update
 RUN apt-get install -y wget gnupg supervisor
@@ -15,12 +15,12 @@ RUN apt-get install -y acestream-engine
 
 ## ace-proxy
 RUN apt-get install -y python2.7 python-gevent python-psutil git
-RUN git clone https://github.com/ValdikSS/aceproxy.git
+RUN git clone git@github.com:vhsw/aceproxy.git
 
 # housekeeping
-#RUN apt-get clean autoclean && \
-#    apt-get autoremove && \
-#    rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
+RUN apt-get clean autoclean && \
+   apt-get autoremove && \
+   rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
 
 
 VOLUME [ "/config" ]
