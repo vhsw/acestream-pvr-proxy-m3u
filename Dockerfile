@@ -29,7 +29,7 @@ RUN git clone https://github.com/pepsik-kiev/HTTPAceProxy.git
 RUN apt-get remove -y git
 RUN apt-get -y autoclean
 RUN apt-get -y autoremove
-RUN rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
+RUN rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log /HTTPAceProxy/.git/
 
 ## volumes
 VOLUME [ "/config" ]
