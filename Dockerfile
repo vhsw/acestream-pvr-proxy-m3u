@@ -15,13 +15,10 @@ RUN apt-get install -y libxslt1.1 libpython2.7 python-setuptools python-apsw ffm
 RUN wget http://mirrors.edge.kernel.org/ubuntu/pool/universe/m/m2crypto/python-m2crypto_0.24.0-2_amd64.deb
 RUN dpkg -i python-m2crypto_0.24.0-2_amd64.deb
 RUN rm python-m2crypto_0.24.0-2_amd64.deb
-
 RUN wget http://dl.acestream.org/linux/acestream_3.1.16_ubuntu_16.04_x86_64.tar.gz
 RUN tar -xzf acestream_3.1.16_ubuntu_16.04_x86_64.tar.gz
 RUN rm /acestream_3.1.16_ubuntu_16.04_x86_64.tar.gz 
 RUN mv /acestream_3.1.16_ubuntu_16.04_x86_64 /opt/acestream
-# RUN rm -rf /usr/share/acestream/*
-# RUN mv acestream_3.1.16_ubuntu_16.04_x86_64/* /usr/share/acestream
 
 ## ace-proxy
 RUN apt-get install -y python2.7 python-gevent python-psutil git
@@ -29,9 +26,10 @@ RUN git clone https://github.com/pepsik-kiev/HTTPAceProxy.git
 
 
 ## housekeeping
-# RUN apt-get clean autoclean && \
-#    apt-get autoremove && \
-#    rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
+RUN apt-get remove -y git
+RUN apt-get -y autoclean
+RUN apt-get -y autoremove
+RUN rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
 
 ## volumes
 VOLUME [ "/config" ]
