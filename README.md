@@ -7,7 +7,11 @@ docker pull vhsw/acestream-pvr-proxy-m3u
 ```
 Then run it:
 ```
-docker run -v config:/absolute/path/to/config --rm -it -p8000:8000 acestream-pvr-proxy-m3u
+docker run --name ace --rm -d -p8000:8000 vhsw/acestream-pvr-proxy-m3u http://path-to-acestream-playlist
+```
+You must google acestream by yourself. Also you might whant to provide custom config to this image:
+```
+docker run -v config:/absolute/path/to/config --rm -d -p8000:8000 vhsw/acestream-pvr-proxy-m3u http://path-to-acestream-playlist
 ```
 Example of contens of the config golder you can find [here](https://github.com/vhsw/acestream-pvr-proxy-m3u/tree/master/config).
 
